@@ -47,8 +47,14 @@
         </div>
         <div class="card-footer bg-transparent text-right" :class="bordercolor">
           <p>
-            รายละเอียด
-            <fa icon="chevron-circle-right" />
+            <NuxtLink
+              to="/goal_1_1_detail"
+              class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
+              target="_blank"
+            >
+              รายละเอียด
+              <fa icon="chevron-circle-right" />
+            </NuxtLink>
           </p>
         </div>
       </div>
@@ -58,7 +64,7 @@
 
 <script>
 import axios from 'axios'
-import { Skeleton } from 'vue-loading-skeleton'
+
 export default {
   name: 'goal1_1',
   data: () => ({
@@ -118,3 +124,11 @@ export default {
   },
 }
 </script>
+<style scoped>
+.nuxt-link-active {
+  color: red;
+}
+.nuxt-link-exact-active {
+  color: #374045;
+}
+</style>

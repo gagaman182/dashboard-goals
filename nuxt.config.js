@@ -2,7 +2,7 @@ export default {
     buildModules: ['@nuxtjs/google-fonts', '@nuxtjs/fontawesome'],
     googleFonts: {
         families: {
-            Taviraj: true,
+            Pridi: true,
 
             // Raleway: {
             //     wght: [300],

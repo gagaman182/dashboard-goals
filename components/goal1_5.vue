@@ -47,8 +47,14 @@
         </div>
         <div class="card-footer bg-transparent text-right" :class="bordercolor">
           <p>
-            รายละเอียด
-            <fa icon="chevron-circle-right" />
+            <NuxtLink
+              to="/test"
+              class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
+              target="_blank"
+            >
+              รายละเอียด
+              <fa icon="chevron-circle-right" />
+            </NuxtLink>
           </p>
         </div>
       </div>
@@ -101,7 +107,7 @@ export default {
     //pmk data, สี, border, card, icon, text
     async fetch_ipd() {
       await axios
-        .get(`${this.$axios.defaults.baseURL}goal1_1.php`)
+        .get(`${this.$axios.defaults.baseURL}goal1_5.php`)
         .then((response) => {
           this.datatotal = response.data
           this.dataperson = this.datatotal[0].dataperson
@@ -118,3 +124,11 @@ export default {
   },
 }
 </script>
+<style scoped>
+.nuxt-link-active {
+  color: red;
+}
+.nuxt-link-exact-active {
+  color: #374045;
+}
+</style>

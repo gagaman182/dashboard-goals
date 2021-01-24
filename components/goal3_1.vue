@@ -28,7 +28,7 @@
             <div class="col-auto">
               <fa
                 v-if="checkdata"
-                icon="heartbeat"
+                icon="hospital"
                 :class="textcolor"
                 class="fa-4x"
               />
@@ -56,6 +56,7 @@
               <fa icon="chevron-circle-right" />
             </NuxtLink>
           </p>
+          <!-- <a href="/test" target="_blank">User</a> -->
         </div>
       </div>
     </div>
@@ -64,9 +65,9 @@
 
 <script>
 import axios from 'axios'
-import { Skeleton } from 'vue-loading-skeleton'
+
 export default {
-  name: 'goal1_2',
+  name: 'goal3_1',
   data: () => ({
     goals: '',
     title: '',
@@ -93,7 +94,7 @@ export default {
       await axios
         .get(`${this.$axios.defaults.baseURL}goals.php`, {
           params: {
-            id: 'g10200',
+            id: 'g31100',
           },
         })
         .then((response) => {
@@ -107,14 +108,22 @@ export default {
     //pmk data, สี, border, card, icon, text
     async fetch_ipd() {
       await axios
-        .get(`${this.$axios.defaults.baseURL}goal1_2.php`)
+        .get(`${this.$axios.defaults.baseURL}goal3_1.php`)
         .then((response) => {
           this.datatotal = response.data
-          this.dataperson = this.datatotal[0].dataperson
+          let numbertostring = this.datatotal[0].dataperson
+
+          //แปลงข้อความ ไม่ถึง1%เป็นตัวเลข
+          this.dataperson = parseFloat(numbertostring)
+          // this.dataperson = this.datatotal[0].dataperson
 
           this.textcolor = this.datatotal[0].textcolor
           this.bordercolor = this.datatotal[0].bordercolor
-          this.datapersonold = this.datatotal[0].datapersonold
+
+          let numbertostringold = this.datatotal[0].datapersonold
+          //แปลงข้อความ ไม่ถึง1%เป็นตัวเลข
+          this.datapersonold = parseFloat(numbertostringold)
+          // this.datapersonold = this.datatotal[0].datapersonold
           this.updowncolor = this.datatotal[0].updowncolor
           this.updownicon = this.datatotal[0].updownicon
 
