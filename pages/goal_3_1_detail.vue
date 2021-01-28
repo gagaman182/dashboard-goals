@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row p-3">
       <div class="toolbargb col-lg-6 text-white card-body">
-        <h6 class="h4 d-inline-block mb-0">อัตราการเสียชีวิตรวมทุกประเภท</h6>
-        <p class="card-category">G10100</p>
+        <h6 class="h4 d-inline-block mb-0">วันนอนเฉลี่ยผู้ป่วยในโรงพยาบาล</h6>
+        <p class="card-category">G31100</p>
       </div>
       <div class="toolbargb text-white col-lg-6 text-right">
-        <fa icon="procedures" :class="textcolor" class="fa-4x" />
+        <fa icon="hospital" :class="textcolor" class="fa-4x" />
       </div>
     </div>
 
@@ -16,7 +16,8 @@
           <div class="card-body">
             <h5 class="card-title text-muted">
               <fa icon="desktop" class="fa-1x" />
-              ตารางแสดงอัตราการเสียชีวิตแยกตามหอผู้ป่วย ปีงบ {{ years[0] }}
+              ตารางแสดงอัตราวันนอนเฉลี่ยผู้ป่วยในโรงพยาบาลแยกตามหอผู้ป่วย ปีงบ
+              {{ years[0] }}
             </h5>
             <div class="table-wrap">
               <table class="table table-bordered">
@@ -24,7 +25,7 @@
                   <tr class="tr-color text-center">
                     <th scope="col ">รหัสหอผู้ป่วย</th>
                     <th scope="col">หอผู้ป่วย</th>
-                    <th scope="col ">อัตราการเสียชีวิต</th>
+                    <th scope="col ">อัตราวันนอน</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -63,7 +64,8 @@
           <div class="card-body">
             <h5 class="card-title text-muted">
               <fa icon="chart-bar" class="fa-1x" />
-              กราฟแสดงอัตราการเสียชีวิตแยกตามหอผู้ป่วย ปีงบ {{ years[0] }}
+              กราฟแสดงอัตราวันนอนเฉลี่ยผู้ป่วยในโรงพยาบาลแยกตามหอผู้ป่วย ปีงบ
+              {{ years[0] }}
             </h5>
 
             <div class="table-wrap" v-show="checkchart">
@@ -86,11 +88,11 @@ import Chart from 'chart.js'
 import ChartJSPluginDatalabels from 'chartjs-plugin-datalabels'
 
 export default {
-  name: 'goal1_1_detail',
+  name: 'goal3_1_detail',
   components: {},
   data: () => ({
     ipddeads: '',
-    ipddeads_chart: '1',
+    ipddeads_chart: '31',
     checkdata: false,
     checkchart: false,
     ward: '',
@@ -111,7 +113,7 @@ export default {
         labels: [],
         datasets: [
           {
-            label: 'อัตราการเสียชีวิต',
+            label: 'อัตราวันนอน',
             data: [],
             // borderColor: '#f6c065',
             backgroundColor: '#51adcf',
@@ -181,7 +183,7 @@ export default {
 
     async fetch_dead_table() {
       await axios
-        .get(`${this.$axios.defaults.baseURL}goal1_1_detail.php`)
+        .get(`${this.$axios.defaults.baseURL}goal3_1_detail.php`)
         .then((response) => {
           this.ipddeads = response.data
           this.checkdata = true
@@ -190,7 +192,7 @@ export default {
 
     async fetch_dead_chart() {
       await axios
-        .get(`${this.$axios.defaults.baseURL}chartjs/goal1_1_detail_chart.php`)
+        .get(`${this.$axios.defaults.baseURL}chartjs/goal3_1_detail_chart.php`)
         .then((response) => {
           this.ipddeads_chart = response.data
 

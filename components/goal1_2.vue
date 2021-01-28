@@ -48,7 +48,7 @@
         <div class="card-footer bg-transparent text-right" :class="bordercolor">
           <p>
             <NuxtLink
-              to="/test"
+              to="/goal_1_2_detail"
               class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
               target="_blank"
             >

@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row p-3">
       <div class="toolbargb col-lg-6 text-white card-body">
-        <h6 class="h4 d-inline-block mb-0">อัตราการเสียชีวิตรวมทุกประเภท</h6>
-        <p class="card-category">G10100</p>
+        <h6 class="h4 d-inline-block mb-0">อัตราตายทารกแรกเกิด</h6>
+        <p class="card-category">G10300</p>
       </div>
       <div class="toolbargb text-white col-lg-6 text-right">
-        <fa icon="procedures" :class="textcolor" class="fa-4x" />
+        <fa icon="baby" :class="textcolor" class="fa-4x" />
       </div>
     </div>
 
@@ -16,7 +16,8 @@
           <div class="card-body">
             <h5 class="card-title text-muted">
               <fa icon="desktop" class="fa-1x" />
-              ตารางแสดงอัตราการเสียชีวิตแยกตามหอผู้ป่วย ปีงบ {{ years[0] }}
+              ตารางแสดงอัตราตายทารกแรกเกิดแยกตามหอผู้ป่วย ปีงบ
+              {{ years[0] }}
             </h5>
             <div class="table-wrap">
               <table class="table table-bordered">
@@ -63,7 +64,8 @@
           <div class="card-body">
             <h5 class="card-title text-muted">
               <fa icon="chart-bar" class="fa-1x" />
-              กราฟแสดงอัตราการเสียชีวิตแยกตามหอผู้ป่วย ปีงบ {{ years[0] }}
+              กราฟแสดงอัตราตายทารกแรกเกิดแยกตามหอผู้ป่วย ปีงบ
+              {{ years[0] }}
             </h5>
 
             <div class="table-wrap" v-show="checkchart">
@@ -86,11 +88,11 @@ import Chart from 'chart.js'
 import ChartJSPluginDatalabels from 'chartjs-plugin-datalabels'
 
 export default {
-  name: 'goal1_1_detail',
+  name: 'goal1_3_detail',
   components: {},
   data: () => ({
     ipddeads: '',
-    ipddeads_chart: '1',
+    ipddeads_chart: '3',
     checkdata: false,
     checkchart: false,
     ward: '',
@@ -181,7 +183,7 @@ export default {
 
     async fetch_dead_table() {
       await axios
-        .get(`${this.$axios.defaults.baseURL}goal1_1_detail.php`)
+        .get(`${this.$axios.defaults.baseURL}goal1_3_detail.php`)
         .then((response) => {
           this.ipddeads = response.data
           this.checkdata = true
@@ -190,7 +192,7 @@ export default {
 
     async fetch_dead_chart() {
       await axios
-        .get(`${this.$axios.defaults.baseURL}chartjs/goal1_1_detail_chart.php`)
+        .get(`${this.$axios.defaults.baseURL}chartjs/goal1_3_detail_chart.php`)
         .then((response) => {
           this.ipddeads_chart = response.data
 
