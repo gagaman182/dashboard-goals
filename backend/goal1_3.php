@@ -12,12 +12,12 @@ $data=array();
 
 $strSQL  = "SELECT
 '1' as years,
-ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) as dataperson,
-case WHEN  ROUND((IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) < 5 then 'text-success' else ' text-danger '  end as textcolor,
-case WHEN  ROUND ((IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) < 5 then 'border-success' else 'border-danger '  end as bordercolor,
+ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 1000,2) as dataperson,
+case WHEN  ROUND((IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 1000,2) < 5 then 'text-success' else ' text-danger '  end as textcolor,
+case WHEN  ROUND ((IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 1000,2) < 5 then 'border-success' else 'border-danger '  end as bordercolor,
 oldyear.dataperson as datapersonold,
-case when ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) < oldyear.dataperson then  'text-success' else ' text-danger '  end as updowncolor,
-case when ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) < oldyear.dataperson then  'arrow-down' else 'arrow-up'  end as updownicon
+case when ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 1000,2) < oldyear.dataperson then  'text-success' else ' text-danger '  end as updowncolor,
+case when ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 1000,2) < oldyear.dataperson then  'arrow-down' else 'arrow-up'  end as updownicon
 
 FROM
 (
@@ -98,7 +98,7 @@ and trunc(PATIENTS.BIRTHDAY-add_months(CAUSE_OF_DEATH.DEATH_DATE,trunc(months_be
 ) ipddeath ON x. YEAR = IPDDEATH. YEAR
 INNER JOIN(SELECT
 '1' as years,
-ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) as dataperson
+ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 1000,2) as dataperson
 
 
 

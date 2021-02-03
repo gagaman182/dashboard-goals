@@ -11,7 +11,7 @@ include 'connect.php';
 $data=array();
 
 $strSQL  = "
-SELECT
+select * from (SELECT
 '1' as years,
 ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) as dataperson,
 case WHEN  ROUND((IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) < 2.5 then 'text-success' else ' text-danger '  end as textcolor,
@@ -59,7 +59,7 @@ SELECT
 	COUNT (IPDTRANS.AN) AS ipddischarge
 FROM
 	IPDTRANS
-INNER JOIN CAUSE_OF_DEATH ON IPDTRANS.AN = CAUSE_OF_DEATH.AN
+
 WHERE
 	IPDTRANS.DATEDISCH >= CASE
 WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
@@ -85,6 +85,7 @@ ELSE
 		'yyyy/mm/dd'
 	)
 END
+and DS_STATUS_ID = '9'
 ) ipddeath ON x. YEAR = IPDDEATH. YEAR
 INNER JOIN(SELECT
 '1' as years,
@@ -104,7 +105,7 @@ FROM
 		IPDTRANS.DATEDISCH >= CASE
 	WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
 		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy') -1 || '/' || '10/01',
+			TO_CHAR (CURRENT_DATE, 'yyyy')-1 || '/' || '10/01',
 			'yyyy/mm/dd'
 		)
 	ELSE
@@ -113,16 +114,16 @@ FROM
 			'yyyy/mm/dd'
 		)
 	END
-	AND IPDTRANS.DATEDISCH <= CASE
+AND IPDTRANS.DATEDISCH <= CASE
 	WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
 		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy')  || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' ||  '30',
-			'yyyy/mm/dd'
+			TO_CHAR (CURRENT_DATE, 'yyyy')  || '/' || TO_CHAR (CURRENT_DATE, 'mm') ,
+			'yyyy/mm/'
 		)
 	ELSE
 		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy') -1 || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' || '30',
-			'yyyy/mm/dd'
+			TO_CHAR (CURRENT_DATE, 'yyyy') -1 || '/' || TO_CHAR (CURRENT_DATE, 'mm'),
+			'yyyy/mm/'
 		)
 	END
 ) x
@@ -132,7 +133,7 @@ SELECT
 	COUNT (IPDTRANS.AN) AS ipddischarge
 FROM
 	IPDTRANS
-INNER JOIN CAUSE_OF_DEATH ON IPDTRANS.AN = CAUSE_OF_DEATH.AN
+
 	WHERE
 		IPDTRANS.DATEDISCH >= CASE
 	WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
@@ -149,17 +150,22 @@ INNER JOIN CAUSE_OF_DEATH ON IPDTRANS.AN = CAUSE_OF_DEATH.AN
 	AND IPDTRANS.DATEDISCH <= CASE
 	WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
 		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy')  || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' ||  '30',
-			'yyyy/mm/dd'
+			TO_CHAR (CURRENT_DATE, 'yyyy')  || '/' || TO_CHAR (CURRENT_DATE, 'mm') ,
+			'yyyy/mm/'
 		)
 	ELSE
 		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy') -1 || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' || '30',
-			'yyyy/mm/dd'
+			TO_CHAR (CURRENT_DATE, 'yyyy') -1 || '/' || TO_CHAR (CURRENT_DATE, 'mm'),
+			'yyyy/mm/'
 		)
 	END
+and DS_STATUS_ID = '9'
 ) ipddeath ON x. YEAR = IPDDEATH. YEAR
 )oldyear on x.year = oldyear.years
+)x
+
+
+
 
 
 

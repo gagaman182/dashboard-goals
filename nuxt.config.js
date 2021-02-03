@@ -113,7 +113,7 @@ export default {
         //home
         baseURL: 'http://localhost/dashboard-goal/backend/',
         //server 5.1
-        // baseURL: 'http://192.168.5.1/dsonline/backend/',
+        // baseURL: 'http://192.168.4.3/webapp/dashboardgoals/backend/',
         //takis
         // baseURL: 'http://61.19.25.207/dsonline/backend/',
     },
@@ -122,4 +122,7 @@ export default {
      ** See https://nuxtjs.org/api/configuration-build/
      */
     build: {},
+    // router: {
+    //     base: '/webapp/dashboardgoals',
+    // },
 }

@@ -5,10 +5,19 @@
 // $servername = "localhost";
 // $username = "root";
 // $password = "123456789";
-// $dbname = "dashboard_goals";
+// $dbname = "goals";
 // $port = "3306";
 
-// takis 3
+// 5.1
+// $servername = "localhost";
+// $username = "root";
+// $password = "1234";
+// $dbname = "goals";
+// $port = "3306";
+
+
+
+// // takis 3
 $servername = "61.19.25.207";
 $username = "takis3";
 $password = "skho@00866";

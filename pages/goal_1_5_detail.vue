@@ -13,7 +13,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4 p-3">
+      <div class="col-md-5 p-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title text-muted">
@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-8 p-3">
+      <div class="col-lg-7 p-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title text-muted">
