@@ -11,7 +11,24 @@
     </div>
 
     <div class="row">
-      <div class="col-md-5 p-3">
+      <div class="col-lg-12 p-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-muted">
+              <fa icon="chart-bar" class="fa-1x" />
+              กราฟแสดงอัตราการเสียชีวิตแยกตามหอผู้ป่วย ปีงบ {{ years[0] }}
+            </h5>
+
+            <div class="table-wrap" v-show="checkchart">
+              <canvas id="my-chart" height="80vh"></canvas>
+            </div>
+            <div class="table-wrap" v-show="!checkchart">
+              <PuSkeleton count="2" height="200px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 p-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title text-muted">
@@ -58,23 +75,6 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-7 p-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title text-muted">
-              <fa icon="chart-bar" class="fa-1x" />
-              กราฟแสดงอัตราการเสียชีวิตแยกตามหอผู้ป่วย ปีงบ {{ years[0] }}
-            </h5>
-
-            <div class="table-wrap" v-show="checkchart">
-              <canvas id="my-chart" height="120vh"></canvas>
-            </div>
-            <div class="table-wrap" v-show="!checkchart">
-              <PuSkeleton count="2" height="200px" />
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -82,12 +82,13 @@
 <script>
 import axios from 'axios'
 import Chart from 'chart.js'
+import barchartward from '@/components/chartjs/barchartward.vue'
 //เรียกใช้ plugin labels
 import ChartJSPluginDatalabels from 'chartjs-plugin-datalabels'
 
 export default {
   name: 'goal1_1_detail',
-  components: {},
+  components: { barchartward },
   data: () => ({
     ipddeads: '',
     ipddeads_chart: '1',
@@ -197,7 +198,7 @@ export default {
           this.ward = this.ipddeads_chart.map((item) => item.PLA_PLACECODE)
           this.dead = this.ipddeads_chart.map((item) => item.IPDDEADCOUNT)
           this.years = this.ipddeads_chart.map((item) => item.YEARS)
-          console.log(this.years)
+
           // labels and data
           this.myChart.config.data.labels = this.ward
           this.myChart.config.data.datasets[0].data = this.dead

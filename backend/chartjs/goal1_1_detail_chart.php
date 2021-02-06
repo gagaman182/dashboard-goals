@@ -35,12 +35,12 @@ END
 AND IPDTRANS.DATEDISCH <= CASE
 WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
 TO_DATE (
-	TO_CHAR (CURRENT_DATE, 'yyyy') + 1 || '/' || '09/30',
+	TO_CHAR (CURRENT_DATE, 'yyyy') + 1 || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' || TO_CHAR (CURRENT_DATE, 'dd') ,
 	'yyyy/mm/dd'
 )
 ELSE
 TO_DATE (
-	TO_CHAR (CURRENT_DATE, 'yyyy') || '/' || '09/30',
+	TO_CHAR (CURRENT_DATE, 'yyyy') || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' || TO_CHAR (CURRENT_DATE, 'dd') ,
 	'yyyy/mm/dd'
 )
 END
