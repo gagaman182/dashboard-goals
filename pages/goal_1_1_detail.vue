@@ -11,11 +11,11 @@
     </div>
     <div class="row">
       <div class="col-lg-12 p-3">
-        <div class="card">
+        <div class="card card-color">
           <div class="card-body">
-            <h5 class="card-title text-muted">
+            <h5 class="card-title font-color">
               <fa icon="chart-bar" class="fa-1x" />
-              กราฟแสดงอัตราการเสียชีวิตแสดงตามปีงบประมาณ
+              กราฟแสดงอัตราการเสียชีวิตตามปีงบประมาณ 5 ปีย้อนหลัง
             </h5>
 
             <div class="table-wrap" v-show="checkchart">
@@ -27,12 +27,29 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-12 p-3">
+        <div class="card card-color">
+          <div class="card-body">
+            <h5 class="card-title font-color">
+              <fa icon="chart-bar" class="fa-1x" />
+              กราฟแสดงอัตราการเสียชีวิตแยกรายเดือน {{ years[0] }}
+            </h5>
+
+            <div class="table-wrap" v-show="checkchart">
+              <canvas id="my-chart3" height="70vh"></canvas>
+            </div>
+            <div class="table-wrap" v-show="!checkchart">
+              <PuSkeleton count="2" height="200px" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-lg-12 p-3">
-        <div class="card">
+        <div class="card card-color">
           <div class="card-body">
-            <h5 class="card-title text-muted">
+            <h5 class="card-title font-color">
               <fa icon="chart-bar" class="fa-1x" />
               กราฟแสดงอัตราการเสียชีวิตแยกตามหอผู้ป่วย ปีงบ {{ years[0] }}
             </h5>
@@ -47,9 +64,9 @@
         </div>
       </div>
       <div class="col-md-12 p-3">
-        <div class="card">
+        <div class="card card-color">
           <div class="card-body">
-            <h5 class="card-title text-muted">
+            <h5 class="card-title font-color">
               <fa icon="desktop" class="fa-1x" />
               ตารางแสดงอัตราการเสียชีวิตแยกตามหอผู้ป่วย ปีงบ {{ years[0] }}
             </h5>
@@ -116,15 +133,21 @@ export default {
 
     myChart: '',
     myChart2: '',
+    myChart3: '',
 
     year_chart: '',
     yearline: '',
     dataline: '',
+
+    month_chart: '',
+    monthbar: '',
+    databar: '',
   }),
   mounted() {
     this.fetch_dead_table()
     this.fetch_dead_chart()
     this.fetch_line_year_chart()
+    this.fetch_bar_month_chart()
   },
   methods: {
     //ตาราง เสียชีวิตราย ward
@@ -147,10 +170,10 @@ export default {
           labels: [],
           datasets: [
             {
-              label: 'อัตราการเสียชีวิต',
+              label: 'จำนวน',
               data: [],
-              borderColor: '#663f3f',
-              backgroundColor: '#51c2d5',
+              borderColor: '#bac964',
+              backgroundColor: '#436f8a',
               borderWidth: 3,
             },
           ],
@@ -159,7 +182,7 @@ export default {
           responsive: true,
           title: {
             display: true,
-            text: 'หอผู้ป่วย',
+            text: 'อัตราการเสียชีวิต/หอผู้ป่วย',
             fontSize: '16',
           },
           legend: {
@@ -195,7 +218,7 @@ export default {
           },
           plugins: {
             datalabels: {
-              color: '#ec4646',
+              color: '#bac964',
               font: {
                 weight: 'bold',
                 size: 16,
@@ -240,7 +263,7 @@ export default {
             {
               label: 'เปอร์เซ็นต์',
               data: [],
-              borderColor: '#51c2d5',
+              borderColor: '#436f8a',
               // backgroundColor: '#51c2d5',
               borderWidth: 3,
               fill: false, //ไม่เอาพื้นหลัง
@@ -251,7 +274,7 @@ export default {
           responsive: true,
           title: {
             display: true,
-            text: 'ปีงบประมาณ',
+            text: 'อัตราการเสียชีวิต/ปีงบประมาณ',
             fontSize: '16',
           },
           legend: {
@@ -287,7 +310,7 @@ export default {
           },
           plugins: {
             datalabels: {
-              color: '#b83b5e',
+              color: '#bac964',
               font: {
                 weight: 'bold',
                 size: 16,
@@ -320,6 +343,98 @@ export default {
           this.checkchart = true
         })
     },
+
+    async fetch_bar_month_chart() {
+      // chart option
+      const ctx3 = document.getElementById('my-chart3')
+      this.myChart3 = new Chart(ctx3, {
+        type: 'horizontalBar',
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: 'จำนวน',
+              data: [],
+              borderColor: '#bac964',
+              backgroundColor: '#436f8a',
+              borderWidth: 3,
+              fill: false, //ไม่เอาพื้นหลัง
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          title: {
+            display: true,
+            text: 'อัตราการเสียชีวิต/เดือน',
+            fontSize: '16',
+          },
+          legend: {
+            display: true,
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  fontSize: 16,
+                  // fontFamily: 'Kanit, sans-serif',
+                  // fontStyle: 'italic',
+                },
+                gridLines: {
+                  display: true,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                gridLines: {
+                  display: false,
+                },
+                ticks: {
+                  beginAtZero: true,
+                  fontSize: 16,
+                  // fontFamily: 'Kanit, sans-serif',
+                  // fontStyle: 'italic',
+                },
+              },
+            ],
+          },
+          plugins: {
+            datalabels: {
+              color: '#f7fbe1',
+              font: {
+                weight: 'bold',
+                size: 16,
+              },
+              align: 'start',
+              anchor: 'end',
+              Clamping: 'end',
+              // backgroundColor: '#92817a',
+              // borderColor: "#B0C4DE",
+              borderRadius: 4,
+              borderWidth: 1,
+            },
+          },
+        },
+      })
+      await axios
+        .get(`${this.$axios.defaults.baseURL}chartjs/goal1_1_month_chart.php`)
+        .then((response) => {
+          this.month_chart = response.data
+
+          this.monthbar = this.month_chart.map((item) => item.months)
+          this.databar = this.month_chart.map((item) => item.datas)
+
+          // labels and data
+          this.myChart3.config.data.labels = this.monthbar
+          this.myChart3.config.data.datasets[0].data = this.databar
+          //update chart
+
+          this.myChart3.chart.update()
+          this.checkchart = true
+        })
+    },
   },
 }
 </script>
@@ -337,5 +452,11 @@ export default {
 }
 .table-condensed {
   font-size: 18px;
+}
+.card-color {
+  background-color: #f4f9f9;
+}
+.font-color {
+  color: #161d6f;
 }
 </style>
