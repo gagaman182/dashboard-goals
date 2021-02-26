@@ -134,4 +134,7 @@ export default {
 .detail-color {
   color: #726a95;
 }
+body {
+  background: navy !important;
+}
 </style>

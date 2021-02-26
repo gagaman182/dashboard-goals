@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row p-3">
-      <div class="toolbargb col-lg-6 text-white card-body">
+      <div class="toolbargb col-lg-6 texthead card-body">
         <h6 class="h4 d-inline-block mb-0">อัตราการเสียชีวิตรวมทุกประเภท</h6>
         <p class="card-category">G10100</p>
       </div>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 p-3">
+      <div class="col-lg-6 p-3">
         <div class="card card-color">
           <div class="card-body">
             <h5 class="card-title font-color">
@@ -19,7 +19,7 @@
             </h5>
 
             <div class="table-wrap" v-show="checkchart">
-              <canvas id="my-chart2" height="70vh"></canvas>
+              <canvas id="my-chart2" height="150vh"></canvas>
             </div>
             <div class="table-wrap" v-show="!checkchart">
               <PuSkeleton count="2" height="200px" />
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-12 p-3">
+      <div class="col-lg-6 p-3">
         <div class="card card-color">
           <div class="card-body">
             <h5 class="card-title font-color">
@@ -36,7 +36,7 @@
             </h5>
 
             <div class="table-wrap" v-show="checkchart">
-              <canvas id="my-chart3" height="70vh"></canvas>
+              <canvas id="my-chart3" height="150vh"></canvas>
             </div>
             <div class="table-wrap" v-show="!checkchart">
               <PuSkeleton count="2" height="200px" />
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 p-3">
+      <div class="col-lg-6 p-3">
         <div class="card card-color">
           <div class="card-body">
             <h5 class="card-title font-color">
@@ -55,7 +55,7 @@
             </h5>
 
             <div class="table-wrap" v-show="checkchart">
-              <canvas id="my-chart" height="80vh"></canvas>
+              <canvas id="my-chart" height="170vh"></canvas>
             </div>
             <div class="table-wrap" v-show="!checkchart">
               <PuSkeleton count="2" height="200px" />
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12 p-3">
+      <div class="col-md-6 p-3">
         <div class="card card-color">
           <div class="card-body">
             <h5 class="card-title font-color">
@@ -402,7 +402,7 @@ export default {
           },
           plugins: {
             datalabels: {
-              color: '#f7fbe1',
+              color: '#bac964',
               font: {
                 weight: 'bold',
                 size: 16,
@@ -440,15 +440,15 @@ export default {
 </script>
 <style>
 .toolbargb {
-  background-color: #374045;
+  background-color: #350b40;
 }
 .table-wrap {
   height: 500px;
   overflow-y: auto;
 }
 .tr-color {
-  background-color: #30475e;
-  color: #dddddd;
+  background-color: #436f8a;
+  color: #f4f9f9;
 }
 .table-condensed {
   font-size: 18px;
@@ -458,5 +458,8 @@ export default {
 }
 .font-color {
   color: #161d6f;
+}
+.texthead {
+  color: #a6f0c6;
 }
 </style>

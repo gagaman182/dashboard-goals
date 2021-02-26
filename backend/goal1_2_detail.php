@@ -18,7 +18,7 @@ $strSQL  = "select * from (
 	COUNT (IPDTRANS.AN) AS ipddead
 	FROM
 		IPDTRANS
-	INNER JOIN CAUSE_OF_DEATH ON IPDTRANS.AN = CAUSE_OF_DEATH.AN
+
 	INNER JOIN DISEASE_WAREHOUSE on IPDTRANS.RUN_AN = DISEASE_WAREHOUSE.IPD_RUN_AN AND IPDTRANS.YEAR_AN = DISEASE_WAREHOUSE.IPD_YEAR_AN
 	INNER JOIN PLACES on IPDTRANS.PLA_PLACECODE = PLACES.PLACECODE
 	WHERE
@@ -35,17 +35,18 @@ $strSQL  = "select * from (
 		)
 	END
 	AND IPDTRANS.DATEDISCH <= CASE
-	WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
-		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy') + 1 || '/' || '09/30',
-			'yyyy/mm/dd'
-		)
-	ELSE
-		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy') || '/' || '09/30',
-			'yyyy/mm/dd'
-		)
-	END
+WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
+TO_DATE (
+	TO_CHAR (CURRENT_DATE, 'yyyy') + 1 || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' || TO_CHAR (CURRENT_DATE, 'dd') ,
+	'yyyy/mm/dd'
+)
+ELSE
+TO_DATE (
+	TO_CHAR (CURRENT_DATE, 'yyyy') || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' || TO_CHAR (CURRENT_DATE, 'dd') ,
+	'yyyy/mm/dd'
+)
+END
+and IPDTRANS.DS_STATUS_ID = '9'
 	and DISEASE_WAREHOUSE.OPDIPD = 'I'
 	AND DISEASE_WAREHOUSE.ICD_CODE BETWEEN 'I210' AND 'I213'
 	GROUP BY IPDTRANS.PLA_PLACECODE,
@@ -60,7 +61,7 @@ $strSQL  = "select * from (
 	COUNT (IPDTRANS.AN) AS ipddead
 	FROM
 		IPDTRANS
-	INNER JOIN CAUSE_OF_DEATH ON IPDTRANS.AN = CAUSE_OF_DEATH.AN
+
 	INNER JOIN DISEASE_WAREHOUSE on IPDTRANS.RUN_AN = DISEASE_WAREHOUSE.IPD_RUN_AN AND IPDTRANS.YEAR_AN = DISEASE_WAREHOUSE.IPD_YEAR_AN
 	INNER JOIN PLACES on IPDTRANS.PLA_PLACECODE = PLACES.PLACECODE
 	WHERE
@@ -77,46 +78,22 @@ $strSQL  = "select * from (
 		)
 	END
 	AND IPDTRANS.DATEDISCH <= CASE
-	WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
-		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy') + 1 || '/' || '09/30',
-			'yyyy/mm/dd'
-		)
-	ELSE
-		TO_DATE (
-			TO_CHAR (CURRENT_DATE, 'yyyy') || '/' || '09/30',
-			'yyyy/mm/dd'
-		)
-	END
+WHEN TO_CHAR (CURRENT_DATE, 'mm') IN ('10', '11', '12') THEN
+TO_DATE (
+	TO_CHAR (CURRENT_DATE, 'yyyy') + 1 || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' || TO_CHAR (CURRENT_DATE, 'dd') ,
+	'yyyy/mm/dd'
+)
+ELSE
+TO_DATE (
+	TO_CHAR (CURRENT_DATE, 'yyyy') || '/' || TO_CHAR (CURRENT_DATE, 'mm') || '/' || TO_CHAR (CURRENT_DATE, 'dd') ,
+	'yyyy/mm/dd'
+)
+END
+and IPDTRANS.DS_STATUS_ID = '9'
 	and DISEASE_WAREHOUSE.OPDIPD = 'I'
 	AND DISEASE_WAREHOUSE.ICD_CODE BETWEEN 'I210' AND 'I213'
 	
 	
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
 	
 ";
 //and DISEASE_WAREHOUSE.HN = '".$hn."'

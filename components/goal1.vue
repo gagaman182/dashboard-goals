@@ -1,25 +1,27 @@
 <template>
   <!-- Card stats -->
+  <div class="row card-color">
+    <div class="row align-items-center p-4">
+      <div class="toolbargb col-lg-12 texthead card-body">
+        <h6 class="h4 d-inline-block mb-0">{{ goaltype[0].typename }}</h6>
+        <p class="card-category">{{ goaltype[0].other }}</p>
+      </div>
 
-  <div class="row align-items-center p-4">
-    <div class="col-lg-12 text-white card-body">
-      <h6 class="h4 d-inline-block mb-0">{{ goaltype[0].typename }}</h6>
-      <p class="card-category">{{ goaltype[0].other }}</p>
-    </div>
-    <div class="col-lg-4 col-12">
-      <goal1_1></goal1_1>
-    </div>
-    <div class="col-lg-4 col-12">
-      <goal1_2></goal1_2>
-    </div>
-    <div class="col-lg-4 col-12">
-      <goal1_3></goal1_3>
-    </div>
-    <div class="col-lg-4 col-12">
-      <goal1_4></goal1_4>
-    </div>
-    <div class="col-lg-4 col-12">
-      <goal1_5></goal1_5>
+      <div class="col-lg-4 col-12">
+        <goal1_1></goal1_1>
+      </div>
+      <div class="col-lg-4 col-12">
+        <goal1_2></goal1_2>
+      </div>
+      <div class="col-lg-4 col-12">
+        <goal1_3></goal1_3>
+      </div>
+      <div class="col-lg-4 col-12">
+        <goal1_4></goal1_4>
+      </div>
+      <div class="col-lg-4 col-12">
+        <goal1_5></goal1_5>
+      </div>
     </div>
   </div>
 </template>
@@ -64,8 +66,15 @@ export default {
   },
 }
 </script>
-<style>
-.col-lg-12 {
-  background-color: #374045;
+<style scoped>
+.toolbargb {
+  background-color: #4e3d53;
+}
+
+.card-color {
+  background-color: #f4f9f9;
+}
+.texthead {
+  color: #a6f0c6;
 }
 </style>

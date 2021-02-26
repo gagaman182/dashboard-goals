@@ -1,5 +1,12 @@
 <template>
   <div>
+    <nav
+      class="navbar navbar-light justify-content-start toolbargbmain textheadmain"
+    >
+      <img src="~/assets/logo/logo.png" class="img-fluid rounded-circle" />
+      &nbsp;&nbsp;
+      <h1 class="">Dashboard โรงพยาบาลหาดใหญ่</h1>
+    </nav>
     <Nuxt />
   </div>
 </template>
@@ -19,6 +26,12 @@ html {
 body {
   font-family: 'Pridi', serif;
 }
+.textheadmain {
+  color: #4a47a3;
+}
+.toolbargbmain {
+  background-color: #e7e6e1;
+}
 
 *,
 *::before,
@@ -27,7 +40,7 @@ body {
   margin: 0;
 }
 
-.button--green {
+/* .button--green {
   display: inline-block;
   border-radius: 4px;
   border: 1px solid #3b8070;
@@ -54,5 +67,5 @@ body {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
-}
+} */
 </style>

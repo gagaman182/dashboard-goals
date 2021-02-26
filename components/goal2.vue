@@ -2,7 +2,7 @@
   <!-- Card stats -->
 
   <div class="row align-items-center p-4">
-    <div class="col-lg-12 text-white card-body">
+    <div class="col-lg-12 toolbargb text-white card-body">
       <h6 class="h4 d-inline-block mb-0">{{ goaltype[0].typename }}</h6>
       <p class="card-category">{{ goaltype[0].other }}</p>
     </div>
@@ -87,8 +87,8 @@ export default {
   },
 }
 </script>
-<style>
-.col-lg-12 {
+<style scoped>
+.toolbargb {
   background-color: #374045;
 }
 </style>

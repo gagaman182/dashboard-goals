@@ -2,10 +2,10 @@
   <div class="row align-items-center p-4">
     <div class="col-md-12 p-12">
       <div class="card mb-3" :class="bordercolor">
-        <div class="card-header bg-transparent" :class="bordercolor">
+        <div class="card-header" :class="bgcolor">
           <h5
             v-if="checkdata"
-            class="card-title text-uppercase text-muted mb-0 font-weight-bold"
+            class="card-title text-uppercase text-white mb-0 font-weight-bold"
           >
             {{ title }}
           </h5>
@@ -30,32 +30,30 @@
                 v-if="checkdata"
                 icon="heartbeat"
                 :class="textcolor"
-                class="fa-4x"
+                class="fa-5x"
               />
               <PuSkeleton :count="2" circle v-else />
             </div>
           </div>
           <p v-if="checkdata" class="mt-3 mb-0 text-sm font-weight-bold">
-            <span class="mr-2" :class="updowncolor">
-              <fa :icon="updownicon" /> {{ datapersonold }}%</span
+            <span class="mr-2 h4" :class="updowncolor">
+              <fa icon="calendar-minus" /> {{ datapersonold }}%</span
             >
-            <span class="text-nowrap text-muted font-weight-bold"
-              >ช่วงเวลาเดี่ยวกันกับปีที่ผ่านมา</span
-            >
+
+            <span class="h5 text-nowrap detail-color">ปีที่ผ่านมา</span>
           </p>
           <PuSkeleton v-else />
         </div>
         <div class="card-footer bg-transparent text-right" :class="bordercolor">
-          <p>
-            <NuxtLink
-              to="/goal_1_2_detail"
-              class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
-              target="_blank"
-            >
-              รายละเอียด
-              <fa icon="chevron-circle-right" />
-            </NuxtLink>
-          </p>
+          <NuxtLink
+            to="/goal_1_2_detail"
+            class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
+            target="_blank"
+          >
+            <h5 class="detail-color">
+              รายละเอียด <fa icon="chevron-circle-right" />
+            </h5>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -64,7 +62,7 @@
 
 <script>
 import axios from 'axios'
-import { Skeleton } from 'vue-loading-skeleton'
+
 export default {
   name: 'goal1_2',
   data: () => ({
@@ -76,6 +74,7 @@ export default {
     dataperson: '',
     textcolor: '',
     bordercolor: '',
+    bgcolor: '',
     datapersonold: '',
     updowncolor: '',
     updownicon: '',
@@ -114,6 +113,7 @@ export default {
 
           this.textcolor = this.datatotal[0].textcolor
           this.bordercolor = this.datatotal[0].bordercolor
+          this.bgcolor = this.datatotal[0].bgcolor
           this.datapersonold = this.datatotal[0].datapersonold
           this.updowncolor = this.datatotal[0].updowncolor
           this.updownicon = this.datatotal[0].updownicon
@@ -130,5 +130,8 @@ export default {
 }
 .nuxt-link-exact-active {
   color: #374045;
+}
+.detail-color {
+  color: #726a95;
 }
 </style>
