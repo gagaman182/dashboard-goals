@@ -1,10 +1,15 @@
 <template>
   <!-- Card stats -->
-  <div class="row card-color">
+  <div class="card-color">
     <div class="row align-items-center p-4">
       <div class="toolbargb col-lg-12 texthead card-body">
-        <h6 class="h4 d-inline-block mb-0">{{ goaltype[0].typename }}</h6>
-        <p class="card-category">{{ goaltype[0].other }}</p>
+        <div class="col-lg-6">
+          <h6 v-if="checkdata" class="h4 d-inline-block mb-0">
+            {{ goaltype[0].typename }}
+          </h6>
+          <p v-if="checkdata" class="card-category">{{ goaltype[0].other }}</p>
+          <PuSkeleton v-else />
+        </div>
       </div>
 
       <div class="col-lg-4 col-12">
@@ -45,6 +50,7 @@ export default {
     danger: false,
 
     classtext: '',
+    checkdata: false,
   }),
 
   mounted() {
@@ -61,6 +67,7 @@ export default {
         })
         .then((response) => {
           this.goaltype = response.data
+          this.checkdata = true
         })
     },
   },

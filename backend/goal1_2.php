@@ -10,8 +10,7 @@ include 'connect.php';
 
 $data=array();
 
-$strSQL  = "
-select * from (
+$strSQL  = "select * from (
 	SELECT
 	'1' as years,
 	ROUND ((  IPDDEATH.IPDDISCHARGE / x.ipddischarge) * 100,2) as dataperson,

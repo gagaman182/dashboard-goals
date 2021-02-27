@@ -3,16 +3,16 @@
     <div class="col-md-12 p-12">
       <div class="card mb-3" :class="bordercolor">
         <div class="card-header" :class="bgcolor">
-          <h5
+          <h4
             v-if="checkdata"
-            class="card-title text-uppercase text-white mb-0 font-weight-bold"
+            class="card-title text-uppercase titlecolor mb-0 font-weight-bold"
           >
             {{ title }}
-          </h5>
+          </h4>
 
           <PuSkeleton v-else />
         </div>
-        <div class="card-body text-success">
+        <div class="card-body text-success cardbgcolor">
           <div class="row">
             <div class="col">
               <span
@@ -40,17 +40,19 @@
               <fa icon="calendar-minus" /> {{ datapersonold }}%</span
             >
 
-            <span class="h5 text-nowrap detail-color">ปีที่ผ่านมา</span>
+            <span class="h5 text-nowrap detail-color texthead"
+              >ปีที่ผ่านมา</span
+            >
           </p>
           <PuSkeleton v-else />
         </div>
-        <div class="card-footer bg-transparent text-right" :class="bordercolor">
+        <div class="card-footer cardbgcolor text-right" :class="bordercolor">
           <NuxtLink
             to="/goal_1_1_detail"
             class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
             target="_blank"
           >
-            <h5 class="detail-color">
+            <h5 class="detail-color texthead">
               รายละเอียด <fa icon="chevron-circle-right" />
             </h5>
           </NuxtLink>
@@ -136,5 +138,14 @@ export default {
 }
 body {
   background: navy !important;
+}
+.texthead {
+  color: #f25287;
+}
+.titlecolor {
+  color: #f4c983;
+}
+.cardbgcolor {
+  background: #f9f3f3;
 }
 </style>
