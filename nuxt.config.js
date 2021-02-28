@@ -45,7 +45,8 @@ export default {
             {
                 rel: 'stylesheet',
                 // href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css',
-                href: 'http://localhost/dashboard-goal/assets/bootstrap.min.css',
+                // href: 'http://localhost/dashboard-goal/assets/bootstrap.min.css',
+                href: 'http://192.168.4.3/webapp/dashboard-goals/assets/bootstrap.min.css',
             },
             //กรณี เอาfont online
             {
@@ -61,23 +62,27 @@ export default {
     },
     script: [{
             // src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js',
-            src: 'http://localhost/dashboard-goal/assets/jquery-3.5.1.slim.min.js',
-            type: 'text/javascript',
+            //src: 'http://localhost/dashboard-goal/assets/jquery-3.5.1.slim.min.js',
+            src: 'http://192.168.4.3/webapp/dashboard-goals/assets/jquery-3.5.1.slim.min.js',
+            //type: 'text/javascript',
         },
         {
             // src: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js',
-            src: 'http://localhost/dashboard-goal/assets/popper.min.js',
+            //src: 'http://localhost/dashboard-goal/assets/popper.min.js',
+            src: 'http://192.168.4.3/webapp/dashboard-goals/assets/popper.min.js',
+            //type: 'text/javascript',
+        },
+        {
+            // src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js',
+            //src: 'http://localhost/dashboard-goal/assets/bootstrap.min.js',
+            src: 'http://192.168.4.3/webapp/dashboard-goals/assets/bootstrap.min.js',
             type: 'text/javascript',
         },
         {
             // src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js',
-            src: 'http://localhost/dashboard-goal/assets/bootstrap.min.js',
-            type: 'text/javascript',
-        },
-        {
-            // src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js',
-            src: 'http://localhost/dashboard-goal/assets/js/all.js',
-            type: 'text/javascript',
+            //src: 'http://localhost/dashboard-goal/assets/js/all.js',
+            src: 'http://192.168.4.3/webapp/dashboard-goals/assets/js/all.js',
+            //type: 'text/javascript',
         },
     ],
     /*
@@ -111,7 +116,9 @@ export default {
      */
     axios: {
         //home
-        baseURL: 'http://localhost/dashboard-goal/backend/',
+        //baseURL: 'http://localhost/dashboard-goal/backend/',
+        // 4.3
+        baseURL: 'http://192.168.4.3/webapp/dashboard-goals/backend/',
         //server 5.1
         // baseURL: 'http://192.168.4.3/webapp/dashboardgoals/backend/',
         //takis
@@ -122,7 +129,7 @@ export default {
      ** See https://nuxtjs.org/api/configuration-build/
      */
     build: {},
-    // router: {
-    //     base: '/webapp/dashboardgoals',
-    // },
+    router: {
+        base: '/webapp/dashboard-goals',
+    },
 }

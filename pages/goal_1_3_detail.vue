@@ -263,7 +263,7 @@ export default {
           labels: [],
           datasets: [
             {
-              label: 'เปอร์เซ็นต์',
+              label: 'จำนวน',
               data: [],
               borderColor: '#436f8a',
               // backgroundColor: '#51c2d5',
@@ -442,7 +442,7 @@ export default {
 </script>
 <style>
 .toolbargb {
-  background-color: #350b40;
+  background-color: #374045;
 }
 .table-wrap {
   height: 500px;

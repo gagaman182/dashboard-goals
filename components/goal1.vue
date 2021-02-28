@@ -75,7 +75,7 @@ export default {
 </script>
 <style scoped>
 .toolbargb {
-  background-color: #4e3d53;
+  background-color: #374045;
 }
 
 .card-color {

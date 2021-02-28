@@ -89,22 +89,6 @@ and DS_STATUS_ID = '9'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
 	
 ";
 //and DISEASE_WAREHOUSE.HN = '".$hn."'

@@ -48,6 +48,7 @@
         </div>
         <div class="card-footer cardbgcolor text-right" :class="bordercolor">
           <NuxtLink
+            v-if="checkdata"
             to="/goal_1_1_detail"
             class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
             target="_blank"
@@ -56,6 +57,7 @@
               รายละเอียด <fa icon="chevron-circle-right" />
             </h5>
           </NuxtLink>
+          <PuSkeleton v-else />
         </div>
       </div>
     </div>
@@ -140,12 +142,12 @@ body {
   background: navy !important;
 }
 .texthead {
-  color: #f25287;
+  color: #ff8e6e;
 }
 .titlecolor {
   color: #f4c983;
 }
 .cardbgcolor {
-  background: #f9f3f3;
+  background: #fbf6f0;
 }
 </style>

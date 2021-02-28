@@ -1,26 +1,20 @@
 <template>
   <!-- Card stats -->
-
-  <div class="row align-items-center p-4">
-    <div class="col-lg-12 text-white card-body">
-      <h6 class="h4 d-inline-block mb-0">{{ goaltype[0].typename }}</h6>
-      <p class="card-category">{{ goaltype[0].other }}</p>
+  <div class="card-color">
+    <div class="row align-items-center p-4">
+      <div class="toolbargb col-lg-12 texthead card-body">
+        <div class="col-lg-6">
+          <h6 v-if="checkdata" class="h4 d-inline-block mb-0">
+            {{ goaltype[0].typename }}
+          </h6>
+          <p v-if="checkdata" class="card-category">{{ goaltype[0].other }}</p>
+          <PuSkeleton v-else />
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <goal3_1></goal3_1>
+      </div>
     </div>
-    <div class="col-md-4 col-12">
-      <goal3_1></goal3_1>
-    </div>
-    <!-- <div class="col-md-4 col-12">
-      <goal1_2></goal1_2>
-    </div>
-    <div class="col-md-4 col-12">
-      <goal1_3></goal1_3>
-    </div>
-    <div class="col-md-4 col-12">
-      <goal1_4></goal1_4>
-    </div>
-    <div class="col-md-4 col-12">
-      <goal1_5></goal1_5>
-    </div> -->
   </div>
 </template>
 
@@ -40,6 +34,7 @@ export default {
     danger: false,
 
     classtext: '',
+    checkdata: false,
   }),
 
   mounted() {
@@ -56,13 +51,21 @@ export default {
         })
         .then((response) => {
           this.goaltype = response.data
+          this.checkdata = true
         })
     },
   },
 }
 </script>
-<style>
-.col-lg-12 {
+<style scoped>
+.toolbargb {
   background-color: #374045;
+}
+
+.card-color {
+  background-color: #f4f9f9;
+}
+.texthead {
+  color: #a6f0c6;
 }
 </style>

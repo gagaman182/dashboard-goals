@@ -442,7 +442,7 @@ export default {
 </script>
 <style>
 .toolbargb {
-  background-color: #350b40;
+  background-color: #374045;
 }
 .table-wrap {
   height: 500px;

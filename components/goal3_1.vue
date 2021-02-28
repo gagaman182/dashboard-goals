@@ -2,17 +2,17 @@
   <div class="row align-items-center p-4">
     <div class="col-md-12 p-12">
       <div class="card mb-3" :class="bordercolor">
-        <div class="card-header bg-transparent" :class="bordercolor">
-          <h5
+        <div class="card-header" :class="bgcolor">
+          <h4
             v-if="checkdata"
-            class="card-title text-uppercase text-muted mb-0 font-weight-bold"
+            class="card-title text-uppercase titlecolor mb-0 font-weight-bold"
           >
             {{ title }}
-          </h5>
+          </h4>
 
           <PuSkeleton v-else />
         </div>
-        <div class="card-body text-success">
+        <div class="card-body text-success cardbgcolor">
           <div class="row">
             <div class="col">
               <span
@@ -28,35 +28,36 @@
             <div class="col-auto">
               <fa
                 v-if="checkdata"
-                icon="hospital"
+                icon="procedures"
                 :class="textcolor"
-                class="fa-4x"
+                class="fa-5x"
               />
               <PuSkeleton :count="2" circle v-else />
             </div>
           </div>
           <p v-if="checkdata" class="mt-3 mb-0 text-sm font-weight-bold">
-            <span class="mr-2" :class="updowncolor">
-              <fa :icon="updownicon" /> {{ datapersonold }}%</span
+            <span class="mr-2 h4" :class="updowncolor">
+              <fa icon="calendar-minus" /> {{ datapersonold }}%</span
             >
-            <span class="text-nowrap text-muted font-weight-bold"
-              >ช่วงเวลาเดี่ยวกันกับปีที่ผ่านมา</span
+
+            <span class="h5 text-nowrap detail-color texthead"
+              >ปีที่ผ่านมา</span
             >
           </p>
           <PuSkeleton v-else />
         </div>
-        <div class="card-footer bg-transparent text-right" :class="bordercolor">
-          <p>
-            <NuxtLink
-              to="/goal_3_1_detail"
-              class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
-              target="_blank"
-            >
-              รายละเอียด
-              <fa icon="chevron-circle-right" />
-            </NuxtLink>
-          </p>
-          <!-- <a href="/test" target="_blank">User</a> -->
+        <div class="card-footer cardbgcolor text-right" :class="bordercolor">
+          <NuxtLink
+            v-if="checkdata"
+            to="/goal_3_1_detail"
+            class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
+            target="_blank"
+          >
+            <h5 class="detail-color texthead">
+              รายละเอียด <fa icon="chevron-circle-right" />
+            </h5>
+          </NuxtLink>
+          <PuSkeleton v-else />
         </div>
       </div>
     </div>
@@ -77,6 +78,7 @@ export default {
     dataperson: '',
     textcolor: '',
     bordercolor: '',
+    bgcolor: '',
     datapersonold: '',
     updowncolor: '',
     updownicon: '',
@@ -111,19 +113,12 @@ export default {
         .get(`${this.$axios.defaults.baseURL}goal3_1.php`)
         .then((response) => {
           this.datatotal = response.data
-          let numbertostring = this.datatotal[0].dataperson
-
-          //แปลงข้อความ ไม่ถึง1%เป็นตัวเลข
-          this.dataperson = parseFloat(numbertostring)
-          // this.dataperson = this.datatotal[0].dataperson
+          this.dataperson = this.datatotal[0].dataperson
 
           this.textcolor = this.datatotal[0].textcolor
           this.bordercolor = this.datatotal[0].bordercolor
-
-          let numbertostringold = this.datatotal[0].datapersonold
-          //แปลงข้อความ ไม่ถึง1%เป็นตัวเลข
-          this.datapersonold = parseFloat(numbertostringold)
-          // this.datapersonold = this.datatotal[0].datapersonold
+          this.bgcolor = this.datatotal[0].bgcolor
+          this.datapersonold = this.datatotal[0].datapersonold
           this.updowncolor = this.datatotal[0].updowncolor
           this.updownicon = this.datatotal[0].updownicon
 
@@ -139,5 +134,20 @@ export default {
 }
 .nuxt-link-exact-active {
   color: #374045;
+}
+.detail-color {
+  color: #726a95;
+}
+body {
+  background: navy !important;
+}
+.texthead {
+  color: #ff8e6e;
+}
+.titlecolor {
+  color: #f4c983;
+}
+.cardbgcolor {
+  background: #fbf6f0;
 }
 </style>

@@ -37,7 +37,7 @@
           </div>
           <p v-if="checkdata" class="mt-3 mb-0 text-sm font-weight-bold">
             <span class="mr-2 h4" :class="updowncolor">
-              <fa icon="calendar-minus" /> {{ datapersonold }}%</span
+              <fa icon="calendar-minus" /> {{ datapersonold }}&nbsp; %</span
             >
 
             <span class="h5 text-nowrap detail-color texthead"
@@ -48,6 +48,7 @@
         </div>
         <div class="card-footer cardbgcolor text-right" :class="bordercolor">
           <NuxtLink
+            v-if="checkdata"
             to="/goal_1_2_detail"
             class="nuxt-link-active nuxt-link-exact-active font-weight-bold"
             target="_blank"
@@ -56,6 +57,7 @@
               รายละเอียด <fa icon="chevron-circle-right" />
             </h5>
           </NuxtLink>
+          <PuSkeleton v-else />
         </div>
       </div>
     </div>
@@ -137,12 +139,12 @@ export default {
   color: #726a95;
 }
 .texthead {
-  color: #f25287;
+  color: #ff8e6e;
 }
 .titlecolor {
   color: #f4c983;
 }
 .cardbgcolor {
-  background: #f9f3f3;
+  background: #fbf6f0;
 }
 </style>
